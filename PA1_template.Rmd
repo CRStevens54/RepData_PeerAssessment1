@@ -24,9 +24,26 @@ activity_omitNA <- na.omit(activity)
 ```
 
 ## What is mean total number of steps taken per day?
+```{r}
+library(ggplot2)
+library(plyr)
 
-
-
+Sumsteps <- aggregate(activity_omitNA$steps~activity_omitNA$date, FUN = sum)
+colnames(Sumsteps)<- c("Day", "Number of Steps")
+```
+Plotting the frequency of steps taken per day
+```{r}
+hist(Sumsteps$`Number of Steps`, breaks = 10, 
+    xlab = "Total Steps", 
+    ylab = "Frequency", 
+    main = "Frequency of Total Steps Taken Per Day", 
+    col = "red")
+```
+The Mean and Median Steps Taken per Day:
+```{r}
+mean(Sumsteps$`Number of Steps`)
+median(Sumsteps$`Number of Steps`)
+```
 
 
 ## What is the average daily activity pattern?
