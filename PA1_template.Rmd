@@ -7,10 +7,25 @@ output:
 
 
 ## Loading and preprocessing the data
+First we will read in the data by making the path of the csv file an object.
+```{r}
+data <- "C:/Users/SteveC13/Desktop/Data Science Text Books/Reproducible Research/activity.csv"
+```
+Next we will define what class the columns are to call into the read.csv function.  Using the read.csv function we can call in the data from the csv as a usable data frame.
+```{r}
+class = c("integer", "character", "integer")
+activity <- read.csv(data, head=TRUE, colClasses=class, na.strings="NA")
+```
+Lasly we will convert the dates to a proper format and also omit any rows that contain an NA from the data frame.
+```{r}
+activity$date <- as.Date(activity$date)
 
-
+activity_omitNA <- na.omit(activity)
+```
 
 ## What is mean total number of steps taken per day?
+
+
 
 
 
