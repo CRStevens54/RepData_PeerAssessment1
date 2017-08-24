@@ -48,10 +48,34 @@ median(Sumsteps$`Number of Steps`)
 
 ## What is the average daily activity pattern?
 
+```{r}
+dailyact <- aggregate(activity_omitNA$steps ~ activity_omitNA$interval, activity_omitNA, mean)
 
+p2 <- ggplot(dailyact, 
+        aes(x = dailyact$`activity_omitNA$interval`, 
+        y = dailyact$`activity_omitNA$steps`), 
+        xlab = "Interval", 
+        ylab="Average Number of Steps")
+p2 + geom_line(linetype = "solid", size=0.75, color="blue")
+        +xlab("Interval")+ylab("Average Number of Steps")+ggtitle("Average Number of Steps per Interval")
+```
+## find interval with maximum steps
+
+```{r}
+Interval_Max <- dailyact[which.max(dailyact$`activity_omitNA$steps`),1]
+Interval_Max
+```
 
 ## Imputing missing values
-
-
+## Counting number of intervals with no steps  ##
+```{r}
+Missingvals<-apply(activity, 1, function(x) sum(is.na(x)))
+sum(Missingvals)
+```
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+```{r}
+
+
+```
