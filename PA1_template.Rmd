@@ -129,4 +129,6 @@ xyplot(activity_meanbyinterv$steps ~ activity_meanbyinterv$interval | activity_m
        xlab = "Time intervals (minutes)", 
        ylab="Average of Total Steps")
 ```
+
+
 Thank you for reading my report.
